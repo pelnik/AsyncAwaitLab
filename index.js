@@ -15,8 +15,16 @@ const mostFrequentWord = (text) => {
 
 const findPassword = async () => {
   startingPoem = await readFile('./poems/starting-poem.txt', "utf8");
-  const frequentWord = await mostFrequentWord(startingPoem);
-  console.log(frequentWord);
+  const firstFrequentWord = await mostFrequentWord(startingPoem);
+  console.log(firstFrequentWord);
+
+  secondPoem = await readFile(`./poems/${firstFrequentWord}.txt`, "utf8");
+  const secondFrequentWord = await mostFrequentWord(secondPoem);
+  console.log(secondFrequentWord);
+
+  thirdPoem = await readFile(`./poems/${secondFrequentWord}.txt`, "utf8");
+  const thirdFrequentWord = await mostFrequentWord(thirdPoem);
+  console.log(thirdFrequentWord);
 }
 
 findPassword();
